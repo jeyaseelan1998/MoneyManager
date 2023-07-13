@@ -1,0 +1,45 @@
+.money-details-container {
+    flex: 0.3;
+    border: 1px solid black;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    /* color: #1e293b; */
+}
+
+.image {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.money-type {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #7e858e;
+}
+
+.amount {
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    color: #334155;
+}
+
+.balance {
+    border: 1px solid #84cc16;
+    background-color: #ecfccb;
+}
+
+.income {
+    border: 1px solid #06b6d4;
+    background-color: #cffafe;
+}
+
+.expenses {
+    border: 1px solid #7c3aed;
+    background-color: #ede9fe;
+}
