@@ -1,1 +1,24 @@
-/* Write your CSS here */
+.transaction-list {
+    border: 1px solid #d7dfe9;
+    border-top: none;    
+    display: flex;
+    justify-content: space-around;
+}
+
+.data-cell {
+    color: #7e858e;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 60px;
+}
+
+
+.delete-btn {
+    border: none;
+    align-self: center;
+    background-color: transparent;
+    cursor: pointer;
+}
+.delete-img {
+    width: 15px;
+}
