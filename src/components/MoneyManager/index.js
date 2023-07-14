@@ -82,11 +82,11 @@ class MoneyManager extends Component {
               <span className="app-name"> Money Manager </span>
             </p>
         </div>
-        <ul className="money-details-lists">
+        <div className="money-details-lists">
           <MoneyDetails type="balance" amount={balance} testid="balanceAmount"/>
           <MoneyDetails type="income" amount={incomeAmount} testid="incomeAmount"/>
           <MoneyDetails type="expenses" amount={expensesAmount} testid="expensesAmount"/>
-        </ul>
+        </div>
         <div className="transaction-form-history-container">
           <form className="add-transaction-form" onSubmit={this.onAddTransaction}>
             <h1 className="form-heading">Add Transaction</h1>
