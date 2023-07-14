@@ -113,3 +113,29 @@ input, select {
     border-radius: 12px;
     flex: 0.55;
 }
+
+.transactions-header {
+    border: 1px solid #d7dfe9;
+    display: flex;
+    justify-content: space-around;
+}
+
+.heading-cell {
+    font-weight: 600;
+    font-size: 14px;
+    color: #334155;
+    margin: 10px 0px;
+    min-width: 60px;
+}
+
+.transactions-lists {
+    padding-left: 0;
+    list-style-type: none;
+    overflow-y: auto;
+    margin: 0;
+    height: 250px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

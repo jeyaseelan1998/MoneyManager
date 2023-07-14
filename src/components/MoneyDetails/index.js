@@ -1,6 +1,6 @@
 import './index.css'
 
-const MoneyDetails = ({type, amount}) => {
+const MoneyDetails = ({type, amount, testid}) => {
     const title = type[0].toUpperCase() + type.slice(1)
     const imageUrl = `https://assets.ccbp.in/frontend/react-js/money-manager/${type}-image.png`
 
@@ -9,7 +9,8 @@ const MoneyDetails = ({type, amount}) => {
             <img src={imageUrl} alt={type} className="image"/>
             <div>
                 <p className="money-type">Your {title}</p>
-                <p className="amount">RS {amount}</p>
+                <p className="amount">RS</p>
+                <p className="amount" data-testid={testid}>{amount}</p>
             </div>
         </li>
     )

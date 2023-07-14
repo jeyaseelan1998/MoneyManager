@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {v4 as uuidv4} from 'uuid'
 
+import TransactionItem from '../TransactionItem'
 import MoneyDetails from '../MoneyDetails';
 
 import './index.css'
@@ -21,7 +22,7 @@ class MoneyManager extends Component {
     transactionHistory: [],
     title: '',
     amount: '',
-    type: transactionTypeOptions[0].displayText
+    type: transactionTypeOptions[0].optionId
   }
 
   onAddTransaction = event => {
@@ -31,10 +32,13 @@ class MoneyManager extends Component {
       id: uuidv4(),
       title,
       amount,
-      type
+      type: type[0] + type.slice(1).toLowerCase()
     }
     this.setState(prevState => ({
-      transactionHistory: [...prevState.transactionHistory, newtransaction]
+      transactionHistory: [...prevState.transactionHistory, newtransaction],
+      title: '',
+      amount: '',
+      type: transactionTypeOptions[0].displayText
     }))
   }
 
@@ -55,6 +59,12 @@ class MoneyManager extends Component {
     return incomeTransactions.reduce((acc, item) => acc + parseInt(item.amount), 0)
   }
 
+  onDelete = (uniqueId) => {
+    this.setState(prevState => ({
+      transactionHistory: prevState.transactionHistory.filter(item => item.id !== uniqueId)
+    }))
+  }
+
   render() {
     const name = 'Richard'
     const {transactionHistory, title, amount, type} = this.state
@@ -73,22 +83,22 @@ class MoneyManager extends Component {
             </p>
         </div>
         <ul className="money-details-lists">
-          <MoneyDetails type="balance" amount={balance}/>
-          <MoneyDetails type="income" amount={incomeAmount}/>
-          <MoneyDetails type="expenses" amount={expensesAmount}/>
+          <MoneyDetails type="balance" amount={balance} testid="balanceAmount"/>
+          <MoneyDetails type="income" amount={incomeAmount} testid="incomeAmount"/>
+          <MoneyDetails type="expenses" amount={expensesAmount} testid="expensesAmount"/>
         </ul>
         <div className="transaction-form-history-container">
           <form className="add-transaction-form" onSubmit={this.onAddTransaction}>
-            <p className="form-heading">Add Transaction</p>
+            <h1 className="form-heading">Add Transaction</h1>
             <label htmlFor="title">Title</label>
             <input type="text" id="title" name="title" value={title} onChange={this.onChangeInput}/>
             <label htmlFor="amount">Amount</label>
             <input type="text" id="amount" name="amount" value={amount} onChange={this.onChangeInput}/>
             <label htmlFor="type">Type</label>
-            <select id="type" name="type" onChange={this.onChangeInput}>
+            <select id="type" name="type" onChange={this.onChangeInput} value={type}>
               {
                 transactionTypeOptions.map(item => 
-                  <option key={item.optionId} value={item.displayText} selected={type === item.displayText}>{item.displayText}</option>)
+                  <option key={item.optionId} value={item.optionId}>{item.displayText}</option>)
               }
             </select>
             <button className="button" type="submit">
@@ -96,7 +106,18 @@ class MoneyManager extends Component {
             </button>
           </form>
           <div className="transaction-history-container">
-            <p className="transaction-history-heading">History</p>
+            <h1 className="transaction-history-heading">History</h1>
+            <div className="transactions-header">
+              <p className="heading-cell">Title</p>
+              <p className="heading-cell">Amount</p>
+              <p className="heading-cell">Type</p>
+              <p className="heading-cell"/>
+            </div>
+            {transactionHistory.length > 0 ? <ul className="transactions-lists">
+              {
+                transactionHistory.map(item => <TransactionItem key={item.id} transactionDetails={item} onDelete={this.onDelete}/>)
+              }
+            </ul> : <p className="data-cell m-auto">No data found</p>}
           </div>
         </div>
       </div>
