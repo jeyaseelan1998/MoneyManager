@@ -9,11 +9,11 @@ const MoneyDetails = ({type, amount, testid}) => {
             <img src={imageUrl} alt={type} className="image"/>
             <div>
                 <p className="money-type">Your {title}</p>
-                <p className="amount">RS</p>
-                <p className="amount" data-testid={testid}>{amount}</p>
+                <p className="amount" data-testid={testid}>RS {amount}</p>
             </div>
         </div>
     )
 }
 
 export default MoneyDetails
+                //  <p className="amount">RS</p>

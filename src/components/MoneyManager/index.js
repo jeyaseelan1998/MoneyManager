@@ -90,11 +90,11 @@ class MoneyManager extends Component {
         <div className="transaction-form-history-container">
           <form className="add-transaction-form" onSubmit={this.onAddTransaction}>
             <h1 className="form-heading">Add Transaction</h1>
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" name="title" value={title} onChange={this.onChangeInput}/>
-            <label htmlFor="amount">Amount</label>
-            <input type="text" id="amount" name="amount" value={amount} onChange={this.onChangeInput}/>
-            <label htmlFor="type">Type</label>
+            <label htmlFor="title">TITLE</label>
+            <input type="text" id="title" name="title" value={title} onChange={this.onChangeInput} placeholder="TITLE"/>
+            <label htmlFor="amount">AMOUNT</label>
+            <input type="text" id="amount" name="amount" value={amount} onChange={this.onChangeInput} placeholder="AMOUNT"/>
+            <label htmlFor="type">TYPE</label>
             <select id="type" name="type" onChange={this.onChangeInput} value={type}>
               {
                 transactionTypeOptions.map(item => 
@@ -113,11 +113,11 @@ class MoneyManager extends Component {
               <p className="heading-cell">Type</p>
               <p className="heading-cell"/>
             </div>
-            {transactionHistory.length > 0 ? <ul className="transactions-lists">
+            <ul className="transactions-lists">
               {
                 transactionHistory.map(item => <TransactionItem key={item.id} transactionDetails={item} onDelete={this.onDelete}/>)
               }
-            </ul> : <p className="data-cell m-auto">No data found</p>}
+            </ul>
           </div>
         </div>
       </div>

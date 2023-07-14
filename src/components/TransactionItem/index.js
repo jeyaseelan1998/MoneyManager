@@ -4,7 +4,10 @@ const TransactionItem = props => {
     const {transactionDetails, onDelete} = props
     const {id, title, amount, type} = transactionDetails
 
-    const onDeleteClick = () => onDelete(id)
+    const onDeleteClick = () => {
+        onDelete(id)
+    }
+    
     return (
         <li className="transaction-list">
             <p className="data-cell">{title}</p>
